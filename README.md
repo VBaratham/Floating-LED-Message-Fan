@@ -20,6 +20,7 @@ The nextrev ISR is triggered by the CCP1 module, which is set to "capture" on fa
 TODO
 ----
 
+- Currently, the font tables store a 0 for every other column because having pixels touching horizontally but not vertically looks ridiculous, but this is a stupid way to achieve horizontal separation between pixels. Do it right.
 - Change hex literals to binary where they represent bit patterns, especially in the font tables
 - Implement lowercase letters (find a 7 row pixel font?)
 - Major refactoring: break into submodules, starting with the font tables, ISRs, and config sections
