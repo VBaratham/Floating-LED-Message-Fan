@@ -21,8 +21,9 @@ TODO
 ----
 
 - Currently, the font tables store a 0 for every other column because having pixels touching horizontally but not vertically looks ridiculous, but this is a stupid way to achieve horizontal separation between pixels. Do it right.
+- Deal with the problem of TMR2 overflow/rollover when the fan speed decreases too much.
 - Change hex literals to binary where they represent bit patterns, especially in the font tables
 - Implement lowercase letters (find a 7 row pixel font?)
 - Major refactoring: break into submodules, starting with the font tables, ISRs, and config sections
 - Make output and interrupt source easily configurable (one constant change)
-- Look into generalizing to other PIC16 models. It should work on most, provided they have similar CCP and timer modules
+- Look into generalizing to other PIC16 models. It should work more or less out of the box on most, provided they have similar CCP and timer modules
