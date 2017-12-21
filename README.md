@@ -1,7 +1,7 @@
 Floating-LED-Message-Fan
 ========================
 
-Code for PIC16 series microcontrollers (specifically, model f1826) to display a message that appears to "float" in the air, using a 7 LED bar attached to a fan with once per revolution interrupts for timing. I've been using the falling edge of a photosensor as it passes over a tab attached to the fan's frame as this interrupt source.
+Code for PIC16 series microcontrollers (specifically, model f1826) to display a message that appears to "float" in the air, using a 7 LED bar attached to a fan with once per revolution interrupts for timing. I've been using the falling edge of a photogate as it becomes blocked by a tab attached to the fan's frame as this interrupt source.
 
 Circuit
 -------
