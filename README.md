@@ -13,9 +13,9 @@ Operational Details
 
 The main loop repeatedly grabs the current column being displayed and outputs it to PORTB.
 
-There are two ISRs which modify the current column. The newcol ISR queries the font table for the next column of the current letter, and also checks whether the letter is completely printed (the font tables define each letter's width using the maxcols macro). The newcol ISR is triggered by TMR2 at intervals set by the nextrev ISR.
+There are two ISRs which modify the current column. The newcol ISR queries the font table for the next column of the current letter, and also checks whether the letter is completely printed (the font tables define each letter's width using the maxcols macro). The newcol ISR is triggered by TMR2 at intervals set by the nextrev ISR as described below.
 
-The nextrev ISR is triggered by the CCP1 module, which is set to "capture" on falling edge in config.  It computes the time since the last nextrev interrupt, divides by 2^6, and places the result into PR2 (TMR2 interrupt period). The division by 2^6 is a bit weird: CCP1 is a 2 byte counter, so dividing by 2^6 is implemented by taking jsut the high byte and bitshifting right once. 2^6 was chosen because it allowed for 2^8=256 columns (there is a factor of 4 difference in the speeds of the CCP1 counter and TMR2, and 2^6 * 4 = 2^8).
+The nextrev ISR is triggered by the CCP1 module, which is set to "capture" on falling edge in config. This should be attached to a photogate being tripped once per revolution (a comment in the code says the CCP1 module may use pin RB0, but you should check the ). The nextrev ISR computes the time since the last nextrev interrupt, divides by 2^6, and places the result into PR2 (TMR2 interrupt period). The division by 2^6 is a bit weird: CCP1 is a 2 byte counter, so dividing by 2^6 is implemented by taking jsut the high byte and bitshifting right once. 2^6 was chosen because it allowed for 2^8=256 columns (there is a factor of 4 difference in the speeds of the CCP1 counter and TMR2, and 2^6 * 4 = 2^8).
 
 TODO
 ----
